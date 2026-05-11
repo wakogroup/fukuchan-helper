@@ -789,6 +789,170 @@
     color: var(--gray-l);
   }
 
+  /* ========== WORKS (実績) ========== */
+  .works { background: #fff; }
+  .works-ba {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .works-pair {
+    background: var(--bg-alt);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+  }
+  .works-pair:hover { transform: translateY(-4px); }
+  .ba-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    position: relative;
+    background: #fff;
+  }
+  .ba-images > div {
+    aspect-ratio: 1/1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .ba-images > div span {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+  }
+  .ba-images .after-img span {
+    background: var(--green-d);
+  }
+  .ba-images::after {
+    content: "→";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gold);
+    color: #fff;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+  .works-info {
+    padding: 18px 20px;
+  }
+  .works-info h3 {
+    font-size: 1rem;
+    color: var(--primary-d);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .works-info p {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .works-info .badge {
+    display: inline-block;
+    background: var(--primary-l);
+    color: var(--primary-d);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* Photo gallery grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .gallery-item {
+    aspect-ratio: 1/1;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-item::after {
+    content: "🔍";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+  .gallery-item:hover { transform: scale(1.04); }
+  .gallery-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    color: var(--primary-d);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 24px;
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    transition: all 0.3s;
+  }
+  .gallery-more:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+  .gallery-more-wrap {
+    text-align: center;
+  }
+
+  /* Lightbox modal */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .lightbox.show { display: flex; }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+    border-radius: 8px;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 201;
+  }
+
   /* ========== FAQ ========== */
   .faq-list { max-width: 900px; margin: 0 auto; }
   .faq-item {
@@ -1121,9 +1285,12 @@
     section { padding: 50px 18px; }
     .strengths-grid { grid-template-columns: 1fr; }
     .line-cta-features { grid-template-columns: 1fr; max-width: 300px; }
+    .works-ba { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 600px) {
     .trouble-grid, .services-grid, .voice-grid { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
     .area-sub { grid-template-columns: 1fr 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .access-info dl { grid-template-columns: 1fr; }
@@ -1195,6 +1362,7 @@
     <a href="#strengths">選ばれる理由</a>
     <a href="#price">料金</a>
     <a href="#flow">ご利用の流れ</a>
+    <a href="#works">作業実績</a>
     <a href="#area">対応エリア</a>
     <a href="#voice">お客様の声</a>
     <a href="#faq">よくある質問</a>
@@ -1232,10 +1400,10 @@
 
     <div class="hero-visual">
       <div class="ba-wrap">
-        <div class="ba-card ba-before">
+        <div class="ba-card ba-before" style="background: url('photos/photo_02.jpg') center/cover;">
           <span class="ba-label">BEFORE</span>
         </div>
-        <div class="ba-card ba-after">
+        <div class="ba-card ba-after" style="background: url('photos/photo_06.jpg') center/cover;">
           <span class="ba-label">AFTER</span>
         </div>
         <div class="ba-arrow">→</div>
@@ -1567,6 +1735,92 @@
   </div>
 </section>
 
+<!-- WORKS (実績) -->
+<section class="works" id="works">
+  <div class="container">
+    <div class="section-title">
+      <div class="en">OUR WORKS</div>
+      <h2>実際の<b>作業実績</b>　<i>BEFORE / AFTER</i></h2>
+    </div>
+
+    <!-- BEFORE/AFTER pairs -->
+    <div class="works-ba">
+      <div class="works-pair">
+        <div class="ba-images">
+          <div style="background-image: url('photos/photo_02.jpg');"><span>BEFORE</span></div>
+          <div class="after-img" style="background-image: url('photos/photo_06.jpg');"><span>AFTER</span></div>
+        </div>
+        <div class="works-info">
+          <h3>戸建て リビングの遺品整理</h3>
+          <p>故人様のリビング。大量の遺品を仕分け・撤去し、清掃まで完了。</p>
+          <span class="badge">遺品整理</span>
+        </div>
+      </div>
+
+      <div class="works-pair">
+        <div class="ba-images">
+          <div style="background-image: url('photos/photo_01.jpg');"><span>BEFORE</span></div>
+          <div class="after-img" style="background-image: url('photos/photo_14.jpg');"><span>AFTER</span></div>
+        </div>
+        <div class="works-info">
+          <h3>ゴミ屋敷の玄関・廊下</h3>
+          <p>玄関が開かないほどの状態から、安全な動線を完全に確保。</p>
+          <span class="badge">ゴミ屋敷片付け</span>
+        </div>
+      </div>
+
+      <div class="works-pair">
+        <div class="ba-images">
+          <div style="background-image: url('photos/photo_18.jpg');"><span>BEFORE</span></div>
+          <div class="after-img" style="background-image: url('photos/photo_15.jpg');"><span>AFTER</span></div>
+        </div>
+        <div class="works-info">
+          <h3>古民家のキッチン・水回り</h3>
+          <p>長年使われた水回りを徹底片付け。次のご家族にお渡しできる状態に。</p>
+          <span class="badge">残置物撤去</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <h3 style="text-align: center; margin-bottom: 24px; color: var(--navy); font-size: 1.3rem; font-family: 'Noto Serif JP', serif;">
+      その他の<b style="color:var(--primary-d);">作業実績</b>
+    </h3>
+    <div class="gallery">
+      <div class="gallery-item" style="background-image: url('photos/photo_03.jpg');" data-src="photos/photo_03.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_04.jpg');" data-src="photos/photo_04.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_05.jpg');" data-src="photos/photo_05.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_07.jpg');" data-src="photos/photo_07.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_08.jpg');" data-src="photos/photo_08.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_09.jpg');" data-src="photos/photo_09.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_11.jpg');" data-src="photos/photo_11.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_12.jpg');" data-src="photos/photo_12.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_13.jpg');" data-src="photos/photo_13.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_16.jpg');" data-src="photos/photo_16.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_17.jpg');" data-src="photos/photo_17.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_19.jpg');" data-src="photos/photo_19.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_20.jpg');" data-src="photos/photo_20.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_21.jpg');" data-src="photos/photo_21.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_22.jpg');" data-src="photos/photo_22.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_23.jpg');" data-src="photos/photo_23.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_24.jpg');" data-src="photos/photo_24.jpg"></div>
+      <div class="gallery-item" style="background-image: url('photos/photo_25.jpg');" data-src="photos/photo_25.jpg"></div>
+    </div>
+
+    <div class="gallery-more-wrap">
+      <p style="margin-top: 24px; color: var(--gray); font-size: 0.9rem;">
+        ※ 写真はお客様の許可を得て掲載しています。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <!-- VOICE -->
 <section class="voice" id="voice">
   <div class="container">
@@ -1758,6 +2012,22 @@
     const nav = document.querySelector('nav');
     nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
   }
+  // Lightbox for gallery
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.getElementById('lightboxImg').src = item.dataset.src;
+      document.getElementById('lightbox').classList.add('show');
+    });
+  });
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('show');
+  }
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target.id === 'lightbox') closeLightbox();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 
 </body>
